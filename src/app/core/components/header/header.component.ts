@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { AuthService } from '../../../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,4 +10,16 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  private auth = inject(AuthService);
+
+  @Input({
+    required: true
+  }) userImg: string = ''
+
+  navList = ["Home", "TV Shows", "New & Popular", "Browse by Language"];
+
+  signOut() {
+    sessionStorage.removeItem("loggedInUser");
+    this.auth.signOut();
+  }
 }

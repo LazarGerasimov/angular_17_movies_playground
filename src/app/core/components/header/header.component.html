@@ -1,9 +1,22 @@
-<header class="bg-black sticky top-0">
-    <!-- logo and nav-items -->
+<header class="bg-black sticky top-0 flex items-center justify-between pr-5 pl-2">
+  <!-- logo and nav-items -->
+  <div class="flex items-center">
+    <a href="/">
+      <img width="110" src="assets/fakeflix_logo.png" alt="fakeflix_logo" class="cursor-pointer">
+    </a>
     <div>
-        <img width="110" src="assets/fakeflix_logo.png" alt="fakeflix_logo">
-        <div>
-
-        </div>
+      <ul class=" font-extralight flex gap-5 px-5 ">
+        @for (item of navList; track item) {
+        <li class="text-neutral-200 hover:text-gray-400 hover:scale-110 cursor-pointer transition duration-400 ease-in">
+          {{item}}</li>
+        }
+      </ul>
     </div>
+  </div>
+
+  <!-- user buttons -->
+  <div class="text-white flex items-center gap-3">
+    <img [src]="userImg" alt="user_image" width="42" class="rounded-full">
+    <a href="" class="text-sm" (click)="signOut()">Sign Out</a>
+  </div>
 </header>
